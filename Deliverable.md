@@ -159,7 +159,7 @@ Similarly, we would test that there would be a connection that would allow the m
 
 #### Member Test Cases
 
-***Test Case #1: Creating an Member***
+***Test Case #1: Creating a Member***
 
 *test_create()*
 
@@ -168,11 +168,11 @@ Description: This case tests that the creation of a new *Member* works as intend
 Steps:
 
 1. Create a new *Member* object. 
-2. Check that new *Member* created is an instance of Member. 
-3. Check that total count of Members is 1 - ensuring that new *Member* has been added.
+2. Verify that new *Member* created is an instance of Member. 
+3. Verify that total count of Members is 1 - ensuring that new *Member* has been added.
 Note: When the *Member* object was instantiated, it was set to a *Member* object - but this could just as easily have been *Admin* or *Idol*, as these do the same function as Member. Testing for *Member* shows it will work for *Idol* and *Admin*. 
 
-***Test Case #2: Creating an Member***
+***Test Case #2: Creating a Member***
 
 *test_class_create()*
 
@@ -181,8 +181,8 @@ Description: Similar to ***Test Case #1***, except testing for a second *Member*
 Steps:
 
 1. Create a new *Member* object. 
-2. Check that new *Member* created is an instance of Member. 
-3. Check that total count of Members is 2 - ensuring that new *Member* has been added.
+2. Verify that new *Member* created is an instance of Member. 
+3. Verify that total count of Members is 2 - ensuring that new *Member* has been added.
 Note: When the *Member* object was instantiated, it was set to a *Member* object - but this could just as easily have been *Admin* or *Idol*, as these do the same function as Member. Testing for *Member* shows it will work for *Idol* and *Admin*. 
 
 ***Test Case #3: Retrieving a Member Attribute***
@@ -206,7 +206,7 @@ Steps:
 1. Create a new *Member* object with a name attribute "new_user". 
 2. Get ID of *Member* using `<member>.data['id']` call. 
 3. Call for *Member* object using `Member.objects.get(id=new_member_id).data()['username']` call. 
-4. Confirm that the *Member* name is equal to "new_user". 
+4. Verify that the *Member* name is equal to "new_user". 
       
 ***Test Case #5: Editing a Member***
    
@@ -228,52 +228,67 @@ Description: Testing that changing a *Member's* point value shows the change in 
 
 Steps: 
 
-1. Create a new *Member* object with a name attribute "new_user".
-
-This test is to show that we can change the point value of each member quickly and easily.  We start off by creating a new Member, but leaving out the points field and not defining it in the Member creation.  We then take this member and call the method set_points(), and set the amount of points to whetever, we can set it to 1.  When we retrieve the amount of points that the member has, and check to see that it equals 1.
+1. Create a new *Member* without defining the points field. 
+2. Take this *Member* and call the method `set_points()`, changing member points to any integer value - for this test, we will set the *Member's* points to 50. 
+3. Retrieve *Member* points, checking that it matches the integer value of 50. 
 
 ***Test Case #7: Deleting Member***
 
 *test_delete()*
 
-Description:
+Description: Testing that a *Member* is successfully deleted from the database. 
 
 Steps:
-
-Here we are testing to see if we can create and delete a Member successfully.  We start by creating a new member, then checking to see if it is in the table by calling Member.objects.count() and seeing if that returns a 1.  We then retrieve the id of that object in the table, and delete this by calling Member.objects.filter(id=id).delete(), this will delete the object in the table of that id.  Lastly we call the Member count again and check to see if it is now back at 0, to show that this Member has successfully been deleted.
+1. Create a new *Member*, confirming that it exists within the database by calling `Member.objects.count()`, checking for a return value of 1. 
+2. Retrieve the id of the newly created *Member* object.
+3. Delete this *Member* by calling `Member.objects.filter(id=id).delete()`.
+4. Call `Member.objects.count()` again, confirming that the value is 0 - showing successful deletion.
 
 ***Test Case #8: Remove Method for Member***
 
 *test_remove_method()*
 
-Description:
+Description: Test checking that the remove method is working correctly. `remove_member()` is defined in Models.py.
 
 Steps: 
-
-This test is testing to see if our remove method is working properly.  This remove_member() methond is defined in our Models.py.  We start off by first creating a member, then once this is complete we remove the member using the function remove_member().  We then test to see if the count of the Members table is equal to 0.
+1. Create a new *Member*, confirming that it exists within the database.
+2. Call on `remove_member()`, confirming the count of Members is equal to 0. 
 
 ***Test Case #9: Retrieving Member Attribute Invitedby***
 
 *test_inviteby()*
 
-Description:
+Description: Testing to see if we can properly retrieve the user in which the *Member* was invited by. 
 
 Steps:
-
-In this test, we are testing to see if we can propery retireve the person who the member was invited by.  We start off by creating two members, one is an idol and the other is a member in which we add the idol as the person who the member was invited by.  We then retrieve the user that invited the member, and extract the user name from that user.  We then test to see  if this user name is equal to the user name of the idol.
+1. Create 2 *Members*, one is an *Idol* and one is a *Member*. The *Idol* invited the *Member* in this case. 
+2. Retrieve the user that invited the *Member* , extracting their username. 
+3. Test to see that the username is equal to the name of the *Idol*.
 
 #### Post Test Cases
 
-***Test Case #1: ***
+***Test Case #1: Creating a Post***
 
 *test_create()*
 
-We start this test by creating a new Member object as well as a new Post object.  We first test to see if this post object is an instance of a Post.  Lastly we test to see if there is a Post object in the Post table, showing that a post has been successfully added to the post table.  It is important to note that since we were able to successfully create the post with information added to the user field, we do not have to test that all fields work because we now know they work.
+Description: This case tests that the creation of a new *Post* works as intended.
 
-***Test Case #2:***
+Steps:
+
+1. Create a new *Member* object and a new *Post* object. 
+2. Verify that the created *Post* object is an instance of *Post*. 
+3. Verify that the *Post* object has successfully been added to the *Post* table by checking the count (given the empty database, after creation it will equal 1). 
+
+***Test Case #2: Author of Post***
 
 *test_writer()*
-The point to this test is to test to make sure that the writer of the post is the writer we set it to.  We start here by first creating a new Member and a new Post with the Member as the author.  Then we excract the user_id from the post, to find out who the user was who wrote it.  We then use this id to extract the username from the Member object, and test this user name agaist the name we used to create the Member.  
+
+Description: This case tests that the correct author is set for a *Post* object. 
+
+Steps: 
+1. Create a new *Member* object and new *Post* with the *Member* as the author. 
+2. Extract the user_id from the post. 
+3. Use the user_id to extract the username from the *Member* object, testing that it matches the name of the *Member* created in step 1. 
 
 ***Test Case #3:***
 
