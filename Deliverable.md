@@ -20,7 +20,16 @@ Overall, the database adapter, namely models.py in the case of our Django projec
 |-------------|----------------------------------------------------------------------------------------------------------------------------|
 | Member      | add_member(self, user_id, first_name, last_name, email, pw, cc_num, invited_by, user_type, birthday, address, phone number, date_created)                                                                                                                              |           
 | Member      | get_member(self, obj_id)                                                                                                   |
-| Boolean     | set_member(self, new_information: dict(), obj_id)                                                                          | 
+| Member     | set_visibility(self, visibility: bool)                                                                                     | 
+| Member     | set_email(self, new_email: string)                                                                                    | 
+| Member     | set_password(self, new_password: string)                                                                          | 
+| Member     | set_first_name(self, first_name: string)                                                                          | 
+| Member     | set_last_name(self, last_name: string)                                                                          | 
+| Member     | set_points(self, points: int)                                                                          | 
+| Member     | set_user_type(self, type: string)                                                                          | 
+| Member     | set_is_verified(self, verification: bool)                                                                          | 
+| Member     | set_birthday(self, birthday: string)                                                                          | 
+| Member     | set_address(self, address: string)                                                                          | 
 | Boolean     | remove_member(self, obj_id)  
       
 ### Post API
