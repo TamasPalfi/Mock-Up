@@ -178,7 +178,7 @@ Helper Functions: As is the case with the other object classes, we need to be ab
       - Pre-Conditions: `image`
       - Post-Conditions: Returns a `Filter` object with the following parameters set: `image, filter_name`
 
-#### Member Test Cases
+### Member Test Cases
 
 ***Test Case #1: Creating a Member***
 
@@ -286,7 +286,7 @@ Steps:
 2. Retrieve the user that invited the `Member` , extracting their username. 
 3. Test to see that the username is equal to the name of the `Idol`.
 
-#### Post Test Cases
+### Post Test Cases
 
 ***Test Case #1: Creating a Post***
 
@@ -324,7 +324,7 @@ Steps:
 
 Note: This shows a change for other fields of `Post` will have similar responses.
 
-#### Comment Test Cases
+### Comment Test Cases
 
 ***Test Case #1: Creating a Comment***
 
@@ -347,7 +347,7 @@ Steps:
 
 
 
-#### Credit Card Test Cases
+### Credit Card Test Cases
 
 ***Test Case #1: Creating a Credit Card***
 
@@ -360,7 +360,7 @@ Steps:
 2. Verify that the created `CreditCard` object is an instance of `CreditCard`. 
 3. Verify that the `CreditCard` object has successfully been added to the `CreditCard` table by checking the count (given empty database, after creation it will equal 1). 
 
-#### Image Test Cases
+### Image Test Cases
 
 ***Test Case #1: Creating an Image***
 
@@ -415,7 +415,7 @@ Steps:
 2. Delete the `Image` object using it's `id`. 
 3. Verify that the database is empty, count = 0. 
  
-#### Filter Test Cases
+### Filter Test Cases
 
 ***Test Case #1: Creating a Filter Object***
 
