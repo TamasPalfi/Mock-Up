@@ -182,7 +182,7 @@ Helper Functions: As is the case with the other object classes, we need to be ab
 
 ***Test Case #1: Creating a Member***
 
-*test_create()*
+`test_create()`
 
 Description: This case tests that the creation of a new *Member* works as intended.
 
@@ -195,7 +195,7 @@ Note: When the *Member* object was instantiated, it was set to a *Member* object
 
 ***Test Case #2: Creating a Member***
 
-*test_class_create()*
+`test_class_create()`
 
 Description: Similar to ***Test Case #1***, except this case tests for a second *Member* object being added to Member table in database.
 
@@ -208,7 +208,7 @@ Note: When the *Member* object was instantiated, it was set to a *Member* object
 
 ***Test Case #3: Retrieving a Member Attribute***
 
-*test_get_specific_data()*
+`test_get_specific_data()`
 
 Description: This case tests for retrieval of data from within the database. 
 
@@ -219,7 +219,7 @@ Steps:
       
 ***Test Case #4: Retrieving a Member Attribute By ID***
    
-*test_get_byid()*
+`test_get_byid()`
 
 Description: This case tests that a *Member* attribute can be retrieved through use of *Member's* id. 
 
@@ -231,7 +231,7 @@ Steps:
       
 ***Test Case #5: Editing a Member***
    
-*test_edit()*
+`test_edit()`
 
 Description: This case Tests that after editing a *Member* object, the change is seen in the database. 
 
@@ -243,7 +243,7 @@ Steps:
    
 ***Test Case #6: Setting Member Points***
 
-*test_set_points()*
+`test_set_points()`
 
 Description: This case tests that changing a *Member's* point value shows the change in the database. 
 
@@ -255,7 +255,7 @@ Steps:
 
 ***Test Case #7: Deleting Member***
 
-*test_delete()*
+`test_delete()`
 
 Description: This case tests that a *Member* is successfully deleted from the database. 
 
@@ -267,7 +267,7 @@ Steps:
 
 ***Test Case #8: Remove Method for Member***
 
-*test_remove_method()*
+`test_remove_method()`
 
 Description: This cas tests remove method is working correctly. `remove_member()` is defined in Models.py.
 
@@ -277,7 +277,7 @@ Steps:
 
 ***Test Case #9: Retrieving Member Attribute Invitedby***
 
-*test_inviteby()*
+`test_inviteby()`
 
 Description: This case tests for proper retrieval of the user in which a *Member* was invited by. 
 
@@ -290,7 +290,7 @@ Steps:
 
 ***Test Case #1: Creating a Post***
 
-*test_create()*
+`test_create()`
 
 Description: This case tests that the creation of a new *Post* works as intended.
 
@@ -302,7 +302,7 @@ Steps:
 
 ***Test Case #2: Author of Post***
 
-*test_writer()*
+`test_writer()`
 
 Description: This case tests that the correct author is set for a *Post* object. 
 
@@ -313,7 +313,7 @@ Steps:
 
 ***Test Case #3: Change of URL***
 
-test_set_urls()
+`test_set_urls()`
 
 Description: This case tests that the URL of a post is successfully changed.
 
@@ -328,7 +328,7 @@ Note: This shows a change for other fields of *Post* will have similar responses
 
 ***Test Case #1: Creating a Comment***
 
-*test_create()*
+`test_create()`
 
 Description: This case tests that the creation of a new *Comment* works as intended.
 
@@ -342,7 +342,7 @@ Steps:
 
 ***Test Case #1: Creating a Credit Card***
 
-*test_create()*
+`test_create()`
 
 Description: This case tests that the creation of a new *Credit Card* works as intended.
 
