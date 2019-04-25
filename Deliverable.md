@@ -224,9 +224,11 @@ Steps:
 
 *test_set_points()*
 
-Description:
+Description: Testing that changing a *Member's* point value shows the change in the database. 
 
 Steps: 
+
+1. Create a new *Member* object with a name attribute "new_user".
 
 This test is to show that we can change the point value of each member quickly and easily.  We start off by creating a new Member, but leaving out the points field and not defining it in the Member creation.  We then take this member and call the method set_points(), and set the amount of points to whetever, we can set it to 1.  When we retrieve the amount of points that the member has, and check to see that it equals 1.
 
