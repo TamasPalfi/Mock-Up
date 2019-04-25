@@ -22,58 +22,68 @@ Overall, the database adapter, namely models.py in the case of our Django projec
 | Member      | get_member(self, obj_id)                                                                                                   |
 | Member     | set_visibility(self, visibility: bool)                                                                                     | 
 | Member     | set_email(self, new_email: string)                                                                                    | 
-| Member     | set_password(self, new_password: string)                                                                          | 
-| Member     | set_first_name(self, first_name: string)                                                                          | 
-| Member     | set_last_name(self, last_name: string)                                                                          | 
+| Member     | set_password(self, new_password: str)                                                                          | 
+| Member     | set_first_name(self, first_name: str)                                                                          | 
+| Member     | set_last_name(self, last_name: str)                                                                          | 
 | Member     | set_points(self, points: int)                                                                          | 
-| Member     | set_user_type(self, type: string)                                                                          | 
+| Member     | set_user_type(self, type: str)                                                                          | 
 | Member     | set_is_verified(self, verification: bool)                                                                          | 
-| Member     | set_birthday(self, birthday: string)                                                                          | 
-| Member     | set_address(self, address: string)                                                                          | 
-| Boolean     | remove_member(self, obj_id)  
+| Member     | set_birthday(self, birthday: str)                                                                          | 
+| Member     | set_address(self, address: str)                                                                          | 
+| Boolean     | remove_member(self)  
       
 ### Post API
 
 | Return Type | Method Call                                                          |
 |-------------|----------------------------------------------------------------------|
 | Post        | add_post(self, post_information: dict())                             |
-| Boolean     | set_post(self, new_information: dict(), obj_id)                      |
-| Boolean     | remove_post(self, obj_id)                                            |
+| Post     | get_post(self)                                            |
+| Post     | set_url(self, new_urls: list())                      |
+| Post     | set_is_flagged(self, flag: bool)                      |
+| Post     | set_content(self, new_content: str)                      |
+| Post     | set_by_admin(self, by_admin: bool)                      |
+| Boolean     | remove_post(self)                                            |
 
 ### Comment API
 
 | Return Type | Method Call                                        |
 |-------------|----------------------------------------------------|
 | Comment     | add_comment(self, comment_information: dict())     |
-| Comment     | get_comment(self, obj_id)                          |
-| Boolean     | set_comment(self, new_information: dict(), obj_id) |
-| Boolean     | remove_comment(self, obj_id)                       | 
+| Comment     | get_comment(self)                          |
+| Comment     | set_content(self, new_content: str) |
+| Comment     | set_comment(self, by_admin: bool) |
+| Boolean     | remove_comment(self)                       | 
 
 ### Image API
 
 | Return Type | Method Call                                                          |
 |-------------|----------------------------------------------------------------------|
 | Image       | add_image(self, image_information: dict())                           |
-| Image       | get_image(self, obj_id)                                              |
-| Image       | set_image(self, new_information: dict(), obj_id)                     |
-| Boolean     | remove_image(self, obj_id)                                           |
+| Image       | get_image(self)                                              |
+| Image       | set_is_flagged(self, flag: bool)                     |
+| Image       | set_by_admin(self, by_admin: bool)                     |
+| Boolean     | remove_image(self)                                           |
 
 ### Filter API
 
 | Return Type | Method Call                                                          |
 |-------------|----------------------------------------------------------------------|
 | Boolean     | add_filter(self, filter_information: dict())                         |
-| Filter      | get_filter(self, obj_id)                                             |
-| Boolean     | set_filter(self, new_information: dict(), obj_id)                    |
-| Boolean     | remove_filter(self, obj_id)                                          |
+| Filter      | get_filter(self)                                             |
+| Boolean     | set_filter_name(self, filter_name: str)                    |
+| Boolean     | remove_filter(self)                                          |
 
 ### Credit Card API
 
 | Return Type | Method Call                                                                  |
 |-------------|------------------------------------------------------------------------------|
-| CreditCard  | add_object_type(object_param_1, object_param_2, ..., object_param_n)         |
-| CreditCard  | get_object_type(obj_id)                                                      |
-| CreditCard  | set_object_type(self, optional_change_param_1, ..., optional_change_param_n) |
+| CreditCard  | add_cc(self, params)         |
+| CreditCard  | get_cc(self)                                                      |
+| CreditCard  | set_holder(self, content: fk) |
+| CreditCard  | set_expiration(self, expiration: str) |
+| CreditCard  | set_in_use(self, in_use: bool) |
+| CreditCard  | set_address(self, address: str) |
+| CreditCard  | set_zipcode(self, zipcode: str) |
 | Boolean     | remove_object_type(obj_id)                                                   |
 
 ## Private API
