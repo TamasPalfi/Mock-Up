@@ -221,11 +221,11 @@ Steps:
    
 `test_get_byid()`
 
-Description: This case tests that a `Member` attribute can be retrieved through use of `Member’s id'. 
+Description: This case tests that a `Member` attribute can be retrieved through use of `Member’s id`. 
 
 Steps: 
 1. Create a new `Member` object with a name attribute "new_user". 
-2. Get 'id' of `Member` using `<member>.data['id']` call. 
+2. Get `id` of `Member` using `<member>.data['id']` call. 
 3. Call for `Member` object using `Member.objects.get(id=new_member_id).data()['username']` call. 
 4. Verify that the `Member name` is equal to "new_user". 
       
@@ -371,79 +371,71 @@ Description: This case tests that the creation of an `Image` works as intended.
 Steps:
 1. Create a new `Member` object and a new `Post` object. 
 2. Use the created objects from #1 as parameters in order to create a new `Image` object. 
+3. Verify that the `Image` object has successfully been added to the `Image` table by checking the count (given empty database, after creation it will equal 1).
+4. Test that the `Image` object is the same instance as the `Image` built through the API's `create` call. 
 
-Note: There is another another image variable that is a temporary photo file object created in order to test for comparisons.
-      Assert Statements: 
-      - Test that the image variable is the same instance/object as that image built through the API's create call.  
-      - Test that the object count is equal to one, ensuring no duplicate creation. 
-      
+Note: There is another image variable that is a temporary photo file object created in order to test for comparisons.
+
 ***Test Case #2: Creating an Image***
 
-Description: 
+Description: This case tests that the creation of an 'Image' object works by adding a new 'Image' to the database. Same as *Test Case #1* but ensures that the API `create` call successfully adds data to the database.
 
 Steps:
-
-Case 2: Creating Image Test # 2
-   This case tests that the creation of an image actually works by adding the new image to the database. It is essentially the same as      test case #1, but is ensuring that our API create call adds data to the database
-   
-   Assert Statements:
-      - Test that the image variable is the same instance/object as that image built through our API's create call.  
-      - Test that the object count is equal to two.  Basically, to ensure our first test case actually added to the database.  
+1. Follow Steps 1 - 2 from *Test Case #1*. 
+2. Verify that the `Image` object has successfully been added to the `Image` table by checking the count - which should now equal 2. 
+3. Test that the `Image` object is the same instance as the `Image` built through the API's `create` call. 
 
 ***Test Case #3: Retrieving Image Attribute***
 
-Description:
+Description: This case tests that a `Image` attribute can be retrieved. 
 
-Steps:
-
-Case 3: Getting Image attribute
-  This case tests that the API get call works as intended to retrieve the Image data for a specific attribute.  We will test that the     original_image_id matches to what is in the database.  It works by first creating the respective Member and Post Objects with that the   Image object uses as parameters for creation.  We then get the original_image_id and do an assert statement to ensure they are equal. 
-  
-  Assert Statements:
-      - Test that the original_image_id recieved from GET call is actually the ID specified.  
+Steps: 
+1. Create a new `Member` object and `Post` object using .
+2. Create a new `Image` object using the above as parameters.
+3. Retrieve the `Image` `id`. 
+4. Verify that the original_image `id` matches the `id` retrieved from the `get` call. 
 
 ***Test Case# 4: Setting Image Attribute***
 
-Description:
+Description: This case tests that a change in an `Image's` attribute shows in the database.
 
-Case 4: Setting Image attribute
-   This case tests that the API set call works as intended to update the associated attribute field for the Image object to be changed.    It works by first creating the respective Member and Post Objects with that the Image object uses as parameters for creation.  Then,    a new image ID is set and this is compared to the associated original_image_id that is retrieved from the database.
-   
-   Assert Statements:
-      -Test that the updated original_image_id was reflected in the database and is equivalent. 
+Steps: 
+1. Create a new `Member` object and `Post` object using .
+2. Create a new `Image` object using the above as parameters.
+3. Set a new `Image` `id`.  
+4. Verify that the `id` value retrieved from the database is equivalent to the value that was set. 
 
 ***Test Case# 5: Deleting Image Attribute***
 
-Description:
+Description: This case tests that an `Image` is successfully removed from the database.
 
-Case 5: Deleting Image attribute
-   This case tests that the API delete call works as intended to remove the associated Image is removed from the database. After            creation of the image, we do an assert statement to see that the image is in the database.  We then delete the image with the use of    it's orignal_image_id.  Finally, we check to see that the database is empty as it should be
-   
-   Assert Statements:
-      -Test that the number of Image objects in database is 1 after creation.
+Steps:
+1. Create a new `Image` object. 
+2. Verify it's existence in the database with an assert statement, check that count = 1. 
+2. Delete the `Image` object using it's `id`. 
+3. Verify that the database is empty, count = 0. 
  
 #### Filter Test Cases
 
 ***Test Case #1: Creating a Filter Object***
 
-Description:
+Description: This case tests that the creation of a `Filter` object works as intended.
 
-Case 1: Creating a Filter Object
-   This case tests that the creation of an Filter object works as intended. It works by creating a member, post, and image object first,    and using those created objects as parameters to make an Filter object.  There is another filter variable that is essentially a          temporary photo filter object created to test for comparisons.
-   
-   Assert Statements:
-      - Test that the filter variable is the same instance/object as that filter built through our API's create call.  
-      - Test that the object count is equal to one.  Basically, to ensure create didn't make a duplicate. 
+Steps: 
+1. Create a `Member`, `Post` and `Image` object.
+2. Using the above objects as parameters, create a `Filter` object. 
+3. Verify that the object count is equal to 1 (given an empty database). Ensure no duplicate. 
+4. Verify that the `Filter` is the same instance/object as the `Filter` build through the API's `create` call. 
       
  ***Test Case #2: Setting a Filter Attribute***
  
- Description:
-
- Case 2: Setting a Filter Object's Attribute
-   This case test that the updating of a filter object works as intended.  We will be testing it by changing the filter_id attribute and    ensuring that it is changed in the database as well.
-   
-   Assert Statements:
-      - Test that the updated filter_id was reflected in the database and is equivalent. 
+ Description: This case tests that the updating of a `Filter` object works as intended.
+ 
+ Steps: 
+1. Create a `Member`, `Post` and `Image` object.
+2. Using the above objects as parameters, create a `Filter` object.
+3. Set a new `Filter` `id`. 
+3. Test that the updated `Filter` `id` is equivalent to the `id` retrieved from the database. 
 
 ### Important Cases and Edge Cases
 
