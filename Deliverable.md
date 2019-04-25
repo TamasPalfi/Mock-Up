@@ -174,6 +174,9 @@ Helper Functions: As is the case with the other object classes, we need to be ab
    - Create Image:
       - Preconditions: User, post, image.
       - Postconditions: Returns a Image object with the following params set: user, post, current_image, is_flagged, and by_admin.
+   - Create Filter:
+      - Pre-Conditions: Image
+      - Post-Conditions: Returns a Filter object with the following params set: image, filter_name.
 
 #### Member Test Cases
 
@@ -407,19 +410,6 @@ Case 5: Deleting Image attribute
       -Test that the number of Image objects in database is 1 after creation.
  
 #### Filter Test Cases
-Helper Functions: As is the case with the other object classes, we need to be able to create instances of each object and associated    objects following it in the hierarchy for testing purposes. For the Image test cases, we create the following helper functions:
-   - Create Member: 
-      - Pre-Conditions/Params: Name, invitedBy (optional param)
-      - Post-Conditions: Returns a Member object with the following params set: visibility, invited_by, email, password, username,                                points, user_type, is_verified, birthday, and address.
-   - Create Post: 
-      - Pre-Conditions: Content, User (optional)
-      - Post-Conditions: Returns a Post object with the following params set: user, url, is_flagged,content, and by_admin.
-   - Create Image:
-      - Pre-Conditions: User, post, image.
-      - Post-Conditions: Returns a Image object with the following params set: user, post, current_image, is_flagged, and by_admin.
-   - Create Filter:
-      - Pre-Conditions: Image
-      - Post-Conditions: Returns a Filter object with the following params set: image, filter_name.
 
 ***Test Case #1: Creating a Filter Object***
 
