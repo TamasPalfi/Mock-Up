@@ -160,14 +160,20 @@ Similarly, we would test that there would be a connection that would allow the m
 Helper Functions: As is the case with the other object classes, we need to be able to create instances of each object and associated      objects following it in the hierarchy for testing purposes. We will use the following helper functions throughout our tests: 
 
    - Create Member: 
-      - Pre-Conditions/Params: Name, invitedBy (optional param)
-      - Post-Conditions: Returns a Member object with the following params set: visibility, invited_by, email, password, username, points, user_type, is_verified, birthday, and address.
+      - Preconditions/Params: Name, invitedBy (optional param)
+      - Postconditions: Returns a Member object with the following params set: visibility, invited_by, email, password, username, points, user_type, is_verified, birthday, and address.
    - Create Post: 
       - Pre-Conditions: Content, User (optional)
-      - Post-Conditions: Returns a Post object with the following params set: user, url, is_flagged,content, and by_admin.
+      - Postconditions: Returns a Post object with the following params set: user, url, is_flagged,content, and by_admin.
+   - Create Comment: 
+      - Precondtions:
+      - Postconditions:
+   - Create Credit Card: 
+      - Precondtions:
+      - Postconditions:
    - Create Image:
-      - Pre-Conditions: User, post, image.
-      - Post-Conditions: Returns a Image object with the following params set: user, post, current_image, is_flagged, and by_admin.
+      - Preconditions: User, post, image.
+      - Postconditions: Returns a Image object with the following params set: user, post, current_image, is_flagged, and by_admin.
 
 #### Member Test Cases
 
@@ -317,7 +323,27 @@ Note: This shows a change for other fields of *Post* will have similar responses
 
 #### Comment Test Cases
 
+***Test Case #1: Creating a Comment***
+
+*test_create()*
+
+Description: This case tests that the creation of a new *Comment* works as intended.
+
+Steps: 
+1. Create a new *Member* object and a new *Comment* object. 
+2. Verify that the created *Comment* object is an instance of *Comment*. 
+3. Verify that the *Comment* object has successfully been added to the *Comment* table by checking the count (given the empty database, after creation it will equal 1). 
+
+
 #### Credit Card Test Cases
+
+***Test Case #1: Creating a Credit Card***
+
+*test_create()*
+
+Description: This case tests that the creation of a new *Credit Card* works as intended.
+
+Steps: 
 
 #### Image Test Cases
 
@@ -328,8 +354,9 @@ Description: This case tests that the creation of an image works as intended.
 Steps:
 
 1. Create a *member* object and a *post* object. 
-2. Use the created objects from #1 as parameters in order to create a new *image* object. Note: There is another another image variable that is a temporary photo file object created in order to test for comparisons.
+2. Use the created objects from #1 as parameters in order to create a new *image* object. 
 
+Note: There is another another image variable that is a temporary photo file object created in order to test for comparisons.
       Assert Statements: 
       - Test that the image variable is the same instance/object as that image built through the API's create call.  
       - Test that the object count is equal to one, ensuring no duplicate creation. 
