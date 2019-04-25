@@ -229,14 +229,14 @@ Steps:
 3. Call for `Member` object using `Member.objects.get(id=new_member_id).data()['username']` call. 
 4. Verify that the `Member name` is equal to "new_user". 
       
-***Test Case #5: Editing a Member***
+***Test Case #5: Setting Member Attribute***
    
 `test_edit()`
 
 Description: This case Tests that after editing a `Member` object, the change is seen in the database. 
 
 Steps:
-1. Create a new `Member` object with a name attribute "new_user".
+1. Create a new `Member` object with a `name` attribute "new_user".
 2. Change `Member’s` username by calling  `<member>.set_username("DIFFERENT_USER")`.
 3. Call the username of this `Member` using the call `<member>.data['username']`.
 4. Test that username is equal to `"DIFFERENT_USER"`. 
@@ -337,15 +337,16 @@ Steps:
 2. Verify that the created `Comment` object is an instance of `Comment`. 
 3. Verify that the `Comment` object has successfully been added to the `Comment` table by checking the count (given the empty database, after creation it will equal 1).
 
-***Test Case #2: Checking Content of a Comment***
+***Test Case #2: Retrieving Attribute of Comment***
+
+`test_get_specific_data()`
 
 Description: This case tests that the created `Comment` object contains the correct `content` attribute.
 
 Steps:
 1. Create a new `Member` object and a new `Comment` object with the `content` attribute "Hello World!". 
-2. 
-
-
+2. Retrieve the `Comment's` `content` attribute. 
+3. Verify that the `content` attribute matches "Hello World!". 
 
 ### Credit Card Test Cases
 
@@ -378,6 +379,8 @@ Note: There is another image variable that is a temporary photo file object crea
 
 ***Test Case #2: Creating an Image***
 
+`test_create()`
+
 Description: This case tests that the creation of an 'Image' object works by adding a new 'Image' to the database. Same as *Test Case #1* but ensures that the API `create` call successfully adds data to the database.
 
 Steps:
@@ -386,6 +389,8 @@ Steps:
 3. Test that the `Image` object is the same instance as the `Image` built through the API's `create` call. 
 
 ***Test Case #3: Retrieving Image Attribute***
+
+`test_get_specific_data()`
 
 Description: This case tests that a `Image` attribute can be retrieved. 
 
@@ -397,6 +402,8 @@ Steps:
 
 ***Test Case# 4: Setting Image Attribute***
 
+`test_edit()`
+
 Description: This case tests that a change in an `Image's` attribute shows in the database.
 
 Steps: 
@@ -406,6 +413,8 @@ Steps:
 4. Verify that the `id` value retrieved from the database is equivalent to the value that was set. 
 
 ***Test Case# 5: Deleting Image Attribute***
+
+`test_delete()`
 
 Description: This case tests that an `Image` is successfully removed from the database.
 
@@ -419,6 +428,8 @@ Steps:
 
 ***Test Case #1: Creating a Filter Object***
 
+`test_create()`
+
 Description: This case tests that the creation of a `Filter` object works as intended.
 
 Steps: 
@@ -428,6 +439,8 @@ Steps:
 4. Verify that the `Filter` is the same instance/object as the `Filter` build through the API's `create` call. 
       
  ***Test Case #2: Setting a Filter Attribute***
+ 
+ `test_edit()`
  
  Description: This case tests that the updating of a `Filter` object works as intended.
  
