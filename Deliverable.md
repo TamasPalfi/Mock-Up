@@ -213,7 +213,7 @@ Note: When the `Member` object was instantiated, it was set to a `Member` object
 Description: This case tests for retrieval of data from within the database. 
 
 Steps:
-1. Create a new `Member` object with a name attribute "user_name". 
+1. Create a new `Member` object with a `name` attribute "user_name". 
 2. Call for the username of that variable created using the `<member>.data['username']` to retrieve the username.
 3. Compare this username to the username used upon creation of `Member` object. Confirm these values match.
       
@@ -221,13 +221,13 @@ Steps:
    
 `test_get_byid()`
 
-Description: This case tests that a `Member` attribute can be retrieved through use of `Member’s` id. 
+Description: This case tests that a `Member` attribute can be retrieved through use of `Member’s id'. 
 
 Steps: 
 1. Create a new `Member` object with a name attribute "new_user". 
-2. Get id of `Member` using `<member>.data['id']` call. 
+2. Get 'id' of `Member` using `<member>.data['id']` call. 
 3. Call for `Member` object using `Member.objects.get(id=new_member_id).data()['username']` call. 
-4. Verify that the `Member` name is equal to "new_user". 
+4. Verify that the `Member name` is equal to "new_user". 
       
 ***Test Case #5: Editing a Member***
    
@@ -308,7 +308,7 @@ Description: This case tests that the correct author is set for a `Post` object.
 
 Steps: 
 1. Create a new `Member` object and new `Post` with the `Member` as the author. 
-2. Extract the user_id from the post. 
+2. Extract the `user_id` from the `Post`. 
 3. Use the user_id to extract the username from the `Member` object, testing that it matches the name of the `Member` created in step 1. 
 
 ***Test Case #3: Change of URL***
@@ -335,7 +335,17 @@ Description: This case tests that the creation of a new `Comment` works as inten
 Steps: 
 1. Create a new `Member` object and a new `Comment` object. 
 2. Verify that the created `Comment` object is an instance of `Comment`. 
-3. Verify that the `Comment` object has successfully been added to the `Comment` table by checking the count (given the empty database, after creation it will equal 1). 
+3. Verify that the `Comment` object has successfully been added to the `Comment` table by checking the count (given the empty database, after creation it will equal 1).
+
+***Test Case #2: Checking Content of a Comment***
+
+Description: This case tests that the created `Comment` object contains the correct `content` attribute.
+
+Steps:
+1. Create a new `Member` object and a new `Comment` object with the `content` attribute "Hello World!". 
+2. 
+
+
 
 #### Credit Card Test Cases
 
@@ -354,11 +364,13 @@ Steps:
 
 ***Test Case #1: Creating an Image***
 
-Description: This case tests that the creation of an image works as intended.
+`test_create()`
+
+Description: This case tests that the creation of an `Image` works as intended.
 
 Steps:
 1. Create a new `Member` object and a new `Post` object. 
-2. Use the created objects from #1 as parameters in order to create a new *Image* object. 
+2. Use the created objects from #1 as parameters in order to create a new `Image` object. 
 
 Note: There is another another image variable that is a temporary photo file object created in order to test for comparisons.
       Assert Statements: 
