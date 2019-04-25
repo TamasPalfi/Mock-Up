@@ -160,23 +160,23 @@ Similarly, we would test that there would be a connection that would allow the m
 Helper Functions: As is the case with the other object classes, we need to be able to create instances of each object and associated      objects following it in the hierarchy for testing purposes. We will use the following helper functions throughout our tests: 
 
    - `Create Member`: 
-      - Preconditions/Parameters: Name, invitedBy (optional)
-      - Postconditions: Returns a `Member` object with the following parameters set: visibility, invited_by, email, password, username, points, user_type, is_verified, birthday, and address.
+      - Preconditions/Parameters: `name, invitedBy` (optional)
+      - Postconditions: Returns a `Member` object with the following parameters set: `visibility, invited_by, email, password, username, points, user_type, is_verified, birthday, address`
    - `Create Post`: 
-      - Preconditions: Content, User (optional)
-      - Postconditions: Returns a `Post` object with the following parameters set: user, url, is_flagged,content, and by_admin.
+      - Preconditions: `content, user` (optional)
+      - Postconditions: Returns a `Post` object with the following parameters set: `user, url, is_flagged,content, by_admin`
    - `Create Comment`:
-      - Preconditions: Content, User, Post, Replies (optional) 
-      - Postconditions: Returns a `Comment` object with the following parameters set: user, post, replies, content, by_admin  
+      - Preconditions: `content, user, post, replies` (optional) 
+      - Postconditions: Returns a `Comment` object with the following parameters set: `user, post, replies, content, by_admin`  
    - `Create Credit Card`: 
-      - Preconditions: User
-      - Postconditions: Returns a `CreditCard` object with the following parameters set: user, card_num, cvv, holder_name, card_expiration, currently_used, address, zipcode. 
+      - Preconditions: `user
+      - Postconditions: Returns a `CreditCard` object with the following parameters set: `user, card_num, cvv, holder_name, card_expiration, currently_used, address, zipcode` 
    - `Create Image`:
-      - Preconditions: User, post, image.
-      - Postconditions: Returns a Image object with the following params set: user, post, current_image, is_flagged, and by_admin.
+      - Preconditions: `user, post, image`
+      - Postconditions: Returns a `Image` object with the following parameters set: `user, post, current_image, is_flagged, by_admin`
    - `Create Filter`:
-      - Pre-Conditions: Image
-      - Post-Conditions: Returns a Filter object with the following params set: image, filter_name.
+      - Pre-Conditions: `image`
+      - Post-Conditions: Returns a `Filter` object with the following parameters set: `image, filter_name`
 
 #### Member Test Cases
 
