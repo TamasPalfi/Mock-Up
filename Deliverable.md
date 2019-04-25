@@ -256,11 +256,18 @@ In this test, we are testing to see if we can propery retireve the person who th
 
 #### Post Test Cases
 
-test_create()
+***Test Case #1: ***
+
+*test_create()*
+
 We start this test by creating a new Member object as well as a new Post object.  We first test to see if this post object is an instance of a Post.  Lastly we test to see if there is a Post object in the Post table, showing that a post has been successfully added to the post table.  It is important to note that since we were able to successfully create the post with information added to the user field, we do not have to test that all fields work because we now know they work.
 
-test_writer()
+***Test Case #2:***
+
+*test_writer()*
 The point to this test is to test to make sure that the writer of the post is the writer we set it to.  We start here by first creating a new Member and a new Post with the Member as the author.  Then we excract the user_id from the post, to find out who the user was who wrote it.  We then use this id to extract the username from the Member object, and test this user name agaist the name we used to create the Member.  
+
+***Test Case #3:***
 
 test_set_urls()
 This test is testing that we can change the url of the post successfully.  Being able to do this proves that we can also change every other field in the Post object successfully, because when changing anything in the Post object we just perform the same operation.  So doing it once would prove that we can do it for all of them.  We first start off by creating a Member object and a Post object.  We then define the url of the post to be www.cooltest.com using our set_urls function defined in Models.py.  After this we extract the url name from the post, and test this against the name www.cooltest.com.
@@ -295,24 +302,44 @@ Steps:
       - Test that the image variable is the same instance/object as that image built through the API's create call.  
       - Test that the object count is equal to one, ensuring no duplicate creation. 
       
+***Test Case #2: Creating an Image***
+
+Description: 
+
+Steps:
+
 Case 2: Creating Image Test # 2
    This case tests that the creation of an image actually works by adding the new image to the database. It is essentially the same as      test case #1, but is ensuring that our API create call adds data to the database
    
    Assert Statements:
       - Test that the image variable is the same instance/object as that image built through our API's create call.  
       - Test that the object count is equal to two.  Basically, to ensure our first test case actually added to the database.  
-      
+
+***Test Case #3: Retrieving Image Attribute***
+
+Description:
+
+Steps:
+
 Case 3: Getting Image attribute
   This case tests that the API get call works as intended to retrieve the Image data for a specific attribute.  We will test that the     original_image_id matches to what is in the database.  It works by first creating the respective Member and Post Objects with that the   Image object uses as parameters for creation.  We then get the original_image_id and do an assert statement to ensure they are equal. 
   
   Assert Statements:
       - Test that the original_image_id recieved from GET call is actually the ID specified.  
-  
+
+***Test Case# 4: Setting Image Attribute***
+
+Description:
+
 Case 4: Setting Image attribute
    This case tests that the API set call works as intended to update the associated attribute field for the Image object to be changed.    It works by first creating the respective Member and Post Objects with that the Image object uses as parameters for creation.  Then,    a new image ID is set and this is compared to the associated original_image_id that is retrieved from the database.
    
    Assert Statements:
       -Test that the updated original_image_id was reflected in the database and is equivalent. 
+
+***Test Case# 5: Deleting Image Attribute***
+
+Description:
 
 Case 5: Deleting Image attribute
    This case tests that the API delete call works as intended to remove the associated Image is removed from the database. After            creation of the image, we do an assert statement to see that the image is in the database.  We then delete the image with the use of    it's orignal_image_id.  Finally, we check to see that the database is empty as it should be
@@ -334,14 +361,22 @@ Helper Functions: As is the case with the other object classes, we need to be ab
    - Create Filter:
       - Pre-Conditions: Image
       - Post-Conditions: Returns a Filter object with the following params set: image, filter_name.
-      
+
+***Test Case #1: Creating a Filter Object***
+
+Description:
+
 Case 1: Creating a Filter Object
    This case tests that the creation of an Filter object works as intended. It works by creating a member, post, and image object first,    and using those created objects as parameters to make an Filter object.  There is another filter variable that is essentially a          temporary photo filter object created to test for comparisons.
    
    Assert Statements:
       - Test that the filter variable is the same instance/object as that filter built through our API's create call.  
       - Test that the object count is equal to one.  Basically, to ensure create didn't make a duplicate. 
+      
+ ***Test Case #2: Setting a Filter Attribute***
  
+ Description:
+
  Case 2: Setting a Filter Object's Attribute
    This case test that the updating of a filter object works as intended.  We will be testing it by changing the filter_id attribute and    ensuring that it is changed in the database as well.
    
