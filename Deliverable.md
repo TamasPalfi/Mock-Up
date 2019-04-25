@@ -189,9 +189,12 @@ Note: When the *Member* object was instantiated, it was set to a *Member* object
 
 *test_get_specific_data()*
 
-Description: 
+Description: Testing to retrieve data from within the database. 
 
-In this test we are testing to see if we can get data from the database.  We first make a new Member with a name of "user_name".  We then call for the username of that variable we just created using the <memebr>.data['username'] to retrieve the user name of the variable before the dot.  We then check this username agaist the username that we used when creating the Member, "user_name", to see if the username of the created Member is the same as the user name we used to create the member.
+Steps:
+1. Create a new *Member* object with a name attribute "user_name". 
+2. Call for the username of that variable created using the <member>.data['username'] to retrieve the username.
+3. Compare this username to the username used upon creation of *Member* object. Confirm these values match.
       
 ***Test Case #4: Retrieving a Member Attribute By ID***
    
