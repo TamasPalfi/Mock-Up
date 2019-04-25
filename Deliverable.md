@@ -161,16 +161,16 @@ Helper Functions: As is the case with the other object classes, we need to be ab
 
    - `Create Member`: 
       - Preconditions/Parameters: Name, invitedBy (optional)
-      - Postconditions: Returns a *Member* object with the following parameters set: visibility, invited_by, email, password, username, points, user_type, is_verified, birthday, and address.
+      - Postconditions: Returns a `Member` object with the following parameters set: visibility, invited_by, email, password, username, points, user_type, is_verified, birthday, and address.
    - `Create Post`: 
       - Preconditions: Content, User (optional)
-      - Postconditions: Returns a *Post* object with the following parameters set: user, url, is_flagged,content, and by_admin.
+      - Postconditions: Returns a `Post` object with the following parameters set: user, url, is_flagged,content, and by_admin.
    - `Create Comment`:
       - Preconditions: Content, User, Post, Replies (optional) 
-      - Postconditions: Returns a *Comment* object with the following parameters set: user, post, replies, content, by_admin  
+      - Postconditions: Returns a `Comment` object with the following parameters set: user, post, replies, content, by_admin  
    - `Create Credit Card`: 
       - Preconditions: User
-      - Postconditions: Returns a *CreditCard* object with the following parameters set: user, card_num, cvv, holder_name, card_expiration, currently_used, address, zipcode. 
+      - Postconditions: Returns a `CreditCard` object with the following parameters set: user, card_num, cvv, holder_name, card_expiration, currently_used, address, zipcode. 
    - `Create Image`:
       - Preconditions: User, post, image.
       - Postconditions: Returns a Image object with the following params set: user, post, current_image, is_flagged, and by_admin.
@@ -184,27 +184,27 @@ Helper Functions: As is the case with the other object classes, we need to be ab
 
 `test_create()`
 
-Description: This case tests that the creation of a new *Member* works as intended.
+Description: This case tests that the creation of a new `Member` works as intended.
 
 Steps:
 
-1. Create a new *Member* object. 
-2. Verify that new *Member* created is an instance of Member. 
-3. Verify that total count of Members is 1 - ensuring that new *Member* has been added.
-Note: When the *Member* object was instantiated, it was set to a *Member* object - but this could just as easily have been *Admin* or *Idol*, as these do the same function as Member. Testing for *Member* shows it will work for *Idol* and *Admin*. 
+1. Create a new `Member` object. 
+2. Verify that new `Member` created is an instance of `Member`. 
+3. Verify that total count of Members is 1 - ensuring that new `Member` has been added.
+Note: When the `Member` object was instantiated, it was set to a `Member` object - but this could just as easily have been `Admin` or `Idol`, as these do the same function as Member. Testing for `Member` shows it will work for `Idol` and `Admin`. 
 
 ***Test Case #2: Creating a Member***
 
 `test_class_create()`
 
-Description: Similar to ***Test Case #1***, except this case tests for a second *Member* object being added to Member table in database.
+Description: Similar to ***Test Case #1***, except this case tests for a second `Member` object being added to Member table in database.
 
 Steps:
 
-1. Create a new *Member* object. 
-2. Verify that new *Member* created is an instance of Member. 
-3. Verify that total count of Members is 2 - ensuring that new *Member* has been added.
-Note: When the *Member* object was instantiated, it was set to a *Member* object - but this could just as easily have been *Admin* or *Idol*, as these do the same function as Member. Testing for *Member* shows it will work for *Idol* and *Admin*. 
+1. Create a new `Member` object. 
+2. Verify that new `Member` created is an instance of Member. 
+3. Verify that total count of Members is 2 - ensuring that new `Member` has been added.
+Note: When the `Member` object was instantiated, it was set to a `Member` object - but this could just as easily have been `Admin` or `Idol`, as these do the same function as Member. Testing for `Member` shows it will work for `Idol` and `Admin`. 
 
 ***Test Case #3: Retrieving a Member Attribute***
 
@@ -213,56 +213,56 @@ Note: When the *Member* object was instantiated, it was set to a *Member* object
 Description: This case tests for retrieval of data from within the database. 
 
 Steps:
-1. Create a new *Member* object with a name attribute "user_name". 
+1. Create a new `Member` object with a name attribute "user_name". 
 2. Call for the username of that variable created using the `<member>.data['username']` to retrieve the username.
-3. Compare this username to the username used upon creation of *Member* object. Confirm these values match.
+3. Compare this username to the username used upon creation of `Member` object. Confirm these values match.
       
 ***Test Case #4: Retrieving a Member Attribute By ID***
    
 `test_get_byid()`
 
-Description: This case tests that a *Member* attribute can be retrieved through use of *Member's* id. 
+Description: This case tests that a `Member` attribute can be retrieved through use of `Member’s` id. 
 
 Steps: 
-1. Create a new *Member* object with a name attribute "new_user". 
-2. Get id of *Member* using `<member>.data['id']` call. 
-3. Call for *Member* object using `Member.objects.get(id=new_member_id).data()['username']` call. 
-4. Verify that the *Member* name is equal to "new_user". 
+1. Create a new `Member` object with a name attribute "new_user". 
+2. Get id of `Member` using `<member>.data['id']` call. 
+3. Call for `Member` object using `Member.objects.get(id=new_member_id).data()['username']` call. 
+4. Verify that the `Member` name is equal to "new_user". 
       
 ***Test Case #5: Editing a Member***
    
 `test_edit()`
 
-Description: This case Tests that after editing a *Member* object, the change is seen in the database. 
+Description: This case Tests that after editing a `Member` object, the change is seen in the database. 
 
 Steps:
-1. Create a new *Member* object with a name attribute "new_user".
-2. Change *Member's* username by calling  `<member>.set_username("DIFFERENT_USER")`.
-3. Call the username of this *Member* using the call `<member>.data['username']`.
+1. Create a new `Member` object with a name attribute "new_user".
+2. Change `Member’s` username by calling  `<member>.set_username("DIFFERENT_USER")`.
+3. Call the username of this `Member` using the call `<member>.data['username']`.
 4. Test that username is equal to `"DIFFERENT_USER"`. 
    
 ***Test Case #6: Setting Member Points***
 
 `test_set_points()`
 
-Description: This case tests that changing a *Member's* point value shows the change in the database. 
+Description: This case tests that changing a `Member’s` point value shows the change in the database. 
 
 Steps: 
 
-1. Create a new *Member* without defining the points field. 
-2. Take this *Member* and call the method `set_points()`, changing member points to any integer value - for this test, we will set the *Member's* points to 50. 
-3. Retrieve *Member* points, checking that it matches the integer value of 50. 
+1. Create a new `Member` without defining the points field. 
+2. Take this `Member` and call the method `set_points()`, changing member points to any integer value - for this test, we will set the `Member’s` points to 50. 
+3. Retrieve `Member` points, checking that it matches the integer value of 50. 
 
 ***Test Case #7: Deleting Member***
 
 `test_delete()`
 
-Description: This case tests that a *Member* is successfully deleted from the database. 
+Description: This case tests that a `Member` is successfully deleted from the database. 
 
 Steps:
-1. Create a new *Member*, confirming that it exists within the database by calling `Member.objects.count()`, checking for a return value of 1. 
-2. Retrieve the id of the newly created *Member* object.
-3. Delete this *Member* by calling `Member.objects.filter(id=id).delete()`.
+1. Create a new `Member`, confirming that it exists within the database by calling `Member.objects.count()`, checking for a return value of 1. 
+2. Retrieve the id of the newly created `Member` object.
+3. Delete this `Member` by calling `Member.objects.filter(id=id).delete()`.
 4. Call `Member.objects.count()` again, confirming that the value is 0 - showing successful deletion.
 
 ***Test Case #8: Remove Method for Member***
@@ -272,19 +272,19 @@ Steps:
 Description: This cas tests remove method is working correctly. `remove_member()` is defined in Models.py.
 
 Steps: 
-1. Create a new *Member*, confirming that it exists within the database.
+1. Create a new `Member`, confirming that it exists within the database.
 2. Call on `remove_member()`, confirming the count of Members is equal to 0. 
 
 ***Test Case #9: Retrieving Member Attribute Invitedby***
 
 `test_inviteby()`
 
-Description: This case tests for proper retrieval of the user in which a *Member* was invited by. 
+Description: This case tests for proper retrieval of the user in which a `Member` was invited by. 
 
 Steps:
-1. Create 2 *Members*, one is an *Idol* and one is a *Member*. The *Idol* invited the *Member* in this case. 
-2. Retrieve the user that invited the *Member* , extracting their username. 
-3. Test to see that the username is equal to the name of the *Idol*.
+1. Create 2 `Members`, one is an `Idol` and one is a `Member`. The `Idol` invited the `Member` in this case. 
+2. Retrieve the user that invited the `Member` , extracting their username. 
+3. Test to see that the username is equal to the name of the `Idol`.
 
 #### Post Test Cases
 
@@ -292,24 +292,24 @@ Steps:
 
 `test_create()`
 
-Description: This case tests that the creation of a new *Post* works as intended.
+Description: This case tests that the creation of a new `Post` works as intended.
 
 Steps:
 
-1. Create a new *Member* object and a new *Post* object. 
-2. Verify that the created *Post* object is an instance of *Post*. 
-3. Verify that the *Post* object has successfully been added to the *Post* table by checking the count (given the empty database, after creation it will equal 1). 
+1. Create a new `Member` object and a new `Post` object. 
+2. Verify that the created `Post` object is an instance of `Post`. 
+3. Verify that the `Post` object has successfully been added to the `Post` table by checking the count (given the empty database, after creation it will equal 1). 
 
 ***Test Case #2: Author of Post***
 
 `test_writer()`
 
-Description: This case tests that the correct author is set for a *Post* object. 
+Description: This case tests that the correct author is set for a `Post` object. 
 
 Steps: 
-1. Create a new *Member* object and new *Post* with the *Member* as the author. 
+1. Create a new `Member` object and new `Post` with the `Member` as the author. 
 2. Extract the user_id from the post. 
-3. Use the user_id to extract the username from the *Member* object, testing that it matches the name of the *Member* created in step 1. 
+3. Use the user_id to extract the username from the `Member` object, testing that it matches the name of the `Member` created in step 1. 
 
 ***Test Case #3: Change of URL***
 
@@ -318,11 +318,11 @@ Steps:
 Description: This case tests that the URL of a post is successfully changed.
 
 Steps: 
-1. Create a new *Member* object and a new *Post* object.
-2. Define the url of the *Post* to be www.cooltest.com using the `set_urls` function defined in Models.py. 
-3. Extract the url name from the *Post*, and test against the name www.cooltest.com
+1. Create a new `Member` object and a new `Post` object.
+2. Define the url of the `Post` to be www.cooltest.com using the `set_urls` function defined in Models.py. 
+3. Extract the url name from the `Post`, and test against the name www.cooltest.com
 
-Note: This shows a change for other fields of *Post* will have similar responses.
+Note: This shows a change for other fields of `Post` will have similar responses.
 
 #### Comment Test Cases
 
@@ -330,12 +330,12 @@ Note: This shows a change for other fields of *Post* will have similar responses
 
 `test_create()`
 
-Description: This case tests that the creation of a new *Comment* works as intended.
+Description: This case tests that the creation of a new `Comment` works as intended.
 
 Steps: 
-1. Create a new *Member* object and a new *Comment* object. 
-2. Verify that the created *Comment* object is an instance of *Comment*. 
-3. Verify that the *Comment* object has successfully been added to the *Comment* table by checking the count (given the empty database, after creation it will equal 1). 
+1. Create a new `Member` object and a new `Comment` object. 
+2. Verify that the created `Comment` object is an instance of `Comment`. 
+3. Verify that the `Comment` object has successfully been added to the `Comment` table by checking the count (given the empty database, after creation it will equal 1). 
 
 #### Credit Card Test Cases
 
@@ -346,9 +346,9 @@ Steps:
 Description: This case tests that the creation of a new *Credit Card* works as intended.
 
 Steps: 
-1. Create a new *Member* object and a new *CreditCard* object. 
-2. Verify that the created *CreditCard* object is an instance of *CreditCard*. 
-3. Verify that the *CreditCard* object has successfully been added to the *CreditCard* table by checking the count (given empty database, after creation it will equal 1). 
+1. Create a new `Member` object and a new `CreditCard` object. 
+2. Verify that the created `CreditCard` object is an instance of `CreditCard`. 
+3. Verify that the `CreditCard` object has successfully been added to the `CreditCard` table by checking the count (given empty database, after creation it will equal 1). 
 
 #### Image Test Cases
 
@@ -357,7 +357,7 @@ Steps:
 Description: This case tests that the creation of an image works as intended.
 
 Steps:
-1. Create a new *Member* object and a new *Post* object. 
+1. Create a new `Member` object and a new `Post` object. 
 2. Use the created objects from #1 as parameters in order to create a new *Image* object. 
 
 Note: There is another another image variable that is a temporary photo file object created in order to test for comparisons.
@@ -441,7 +441,7 @@ Case 1: Creating a Filter Object
       - Expiration date must be valid (and in the future)
       - Birth month is between numeric values 1 - 12
       - Birth day is between numeric values 1 - 30
-      - Ensure user type is either *Member*, *Admin*, or *Idol*
+      - Ensure user type is either `Member`, `Admin`, or `Idol`
    
    2. Ensure retrieving data from database table returns expected value
       - 2.a. Ensure ID is valid
