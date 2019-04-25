@@ -36,101 +36,101 @@ The database adapter, namely models.py in the case of our Django project, provid
 
 | Return Type | Method Call                                                          |
 |-------------|----------------------------------------------------------------------|
-| Post        | add_post(self, post_information: dict())                             |
-| Post     | get_post(self)                                            |
-| Post     | set_url(self, new_urls: list())                      |
-| Post     | set_is_flagged(self, flag: bool)                      |
-| Post     | set_content(self, new_content: str)                      |
-| Post     | set_by_admin(self, by_admin: bool)                      |
-| Boolean     | remove_post(self)                                            |
+| Post        | `add_post(self, post_information: dict())`                             |
+| Post     | `get_post(self)`                                            |
+| Post     | `set_url(self, new_urls: list())`                      |
+| Post     | `set_is_flagged(self, flag: bool)`                      |
+| Post     | `set_content(self, new_content: str)`                      |
+| Post     | `set_by_admin(self, by_admin: bool)`                      |
+| Boolean     | `remove_post(self)`                                            |
 
 ### Comment API
 
 | Return Type | Method Call                                        |
 |-------------|----------------------------------------------------|
-| Comment     | add_comment(self, comment_information: dict())     |
-| Comment     | get_comment(self)                          |
-| Comment     | set_content(self, new_content: str) |
-| Comment     | set_comment(self, by_admin: bool) |
-| Boolean     | remove_comment(self)                       | 
+| Comment     | `add_comment(self, comment_information: dict())`     |
+| Comment     | `get_comment(self)`                          |
+| Comment     | `set_content(self, new_content: str)` |
+| Comment     | `set_comment(self, by_admin: bool)` |
+| Boolean     | `remove_comment(self)`                       | 
 
 ### Image API
 
 | Return Type | Method Call                                                          |
 |-------------|----------------------------------------------------------------------|
-| Image       | add_image(self, image_information: dict())                           |
-| Image       | get_image(self)                                              |
-| Image       | set_is_flagged(self, flag: bool)                     |
-| Image       | set_by_admin(self, by_admin: bool)                     |
-| Boolean     | remove_image(self)                                           |
+| Image       | `add_image(self, image_information: dict())`                           |
+| Image       | `get_image(self)`                                              |
+| Image       | `set_is_flagged(self, flag: bool)`                     |
+| Image       | `set_by_admin(self, by_admin: bool)`                     |
+| Boolean     | `remove_image(self)`                                           |
 
 ### Filter API
 
 | Return Type | Method Call                                                          |
 |-------------|----------------------------------------------------------------------|
-| Boolean     | add_filter(self, filter_information: dict())                         |
-| Filter      | get_filter(self)                                             |
-| Boolean     | set_filter_name(self, filter_name: str)                    |
-| Boolean     | remove_filter(self)                                          |
+| Boolean     | `add_filter(self, filter_information: dict())`                         |
+| Filter      | `get_filter(self)`                                             |
+| Boolean     | `set_filter_name(self, filter_name: str)`                    |
+| Boolean     | `remove_filter(self)`                                          |
 
 ### Credit Card API
 
 | Return Type | Method Call                                                                  |
 |-------------|------------------------------------------------------------------------------|
-| CreditCard  | add_cc(self, params)         |
-| CreditCard  | get_cc(self)                                                      |
-| CreditCard  | set_holder(self, content: fk) |
-| CreditCard  | set_expiration(self, expiration: str) |
-| CreditCard  | set_in_use(self, in_use: bool) |
-| CreditCard  | set_address(self, address: str) |
-| CreditCard  | set_zipcode(self, zipcode: str) |
-| Boolean     | remove_object_type(obj_id)                                                   |
+| CreditCard  | `add_cc(self, params)`         |
+| CreditCard  | `get_cc(self)`                                                      |
+| CreditCard  | `set_holder(self, content: fk)` |
+| CreditCard  | `set_expiration(self, expiration: str)` |
+| CreditCard  | `set_in_use(self, in_use: bool)` |
+| CreditCard  | `set_address(self, address: str)` |
+| CreditCard  | `set_zipcode(self, zipcode: str)` |
+| Boolean     | `remove_object_type(obj_id)`                                                   |
 
 ## Private API
 
 We currently have private constructors that can only be accessed through private method calls in our DBAdaptor class which instantiate instances of:
-   - Member objects
-   - Post objects
-   - Image objects
-   - Comment objects
-   - Credit Card objects
-   - Filter objects
+   - `Member` objects
+   - `Post` objects
+   - `Image` objects
+   - `Comment` objects
+   - `CreditCard` objects
+   - `Filter` objects
    
 ### Member
 
 | Return Type       | Method Call                |
 |-------------      |----------------------------|
-| Member Object     | Member(self, user_id, first_name, last_name, email, pw, cc_num, post_id, points, visibility, invited_by, user_type, login_time, logout_time, date_created, birthday, address, phone_number) |
+| Member Object     | `Member(self, user_id, first_name, last_name, email, pw, cc_num, post_id, points, visibility, invited_by, user_type, login_time, logout_time, date_created, birthday, address, phone_number)` |
                 
 ### Comment 
 
 | Return Type       | Method Call                |
 |-------------      |----------------------------|
-| Comment Object    | Comment(self, replies, post_id, user_id, content, date_created, by_admin) |
+| Comment Object    | `Comment(self, replies, post_id, user_id, content, date_created, by_admin)` |
 
 ### Post
 
 | Return Type       | Method Call                |
 |-------------      |----------------------------|
-| Post Object       | Post(self, comments, image_id, user_id, urls, shortened_urls, date_created, date_modified, is_flagged, points_given, content, by_admin) |
+| Post Object       | `Post(self, comments, image_id, user_id, urls, shortened_urls, date_created, date_modified, is_flagged, points_given, content, by_admin)` |
 
 ### Image
 
 | Return Type       | Method Call                |
 |-------------      |----------------------------|
-| Image Object      | Image(self, filter_id, original_image_id, is_flagged, by_admin) |
+| Image Object      | `Image(self, filter_id, original_image_id, is_flagged, by_admin)` |
 
 ### Filter
 
 | Return Type       | Method Call                |
 |-------------      |----------------------------|
-| Filter Object     | Filter(self, filter_id, preview_url) |
+| Filter Object     | `Filter(self, filter_id, preview_url)` |
 
 ### Credit Card
 
 | Return Type       | Method Call                |
 |-------------      |----------------------------|
-| Credit Card Object| CreditCard(self, card_num, cvv, holder_name, exp_date, date_added, currently_used, user_id) |
+| Credit Card Object| `CreditCard(self, card_num, cvv, holder_name, exp_date, date_added, currently_used, user_id)` |
 
 
 ## Class Diagram
