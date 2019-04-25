@@ -18,19 +18,19 @@ The database adapter, namely models.py in the case of our Django project, provid
 
 | Return Type | Method Call                                                                                                                |
 |-------------|----------------------------------------------------------------------------------------------------------------------------|
-| Member      | add_member(self, user_id, first_name, last_name, email, pw, cc_num, invited_by, user_type, birthday, address, phone number, date_created)                                                                                                                              |           
-| Member      | get_member(self, obj_id)                                                                                                   |
-| Member     | set_visibility(self, visibility: bool)                                                                                     | 
-| Member     | set_email(self, new_email: string)                                                                                    | 
-| Member     | set_password(self, new_password: str)                                                                          | 
-| Member     | set_first_name(self, first_name: str)                                                                          | 
-| Member     | set_last_name(self, last_name: str)                                                                          | 
-| Member     | set_points(self, points: int)                                                                          | 
-| Member     | set_user_type(self, type: str)                                                                          | 
-| Member     | set_is_verified(self, verification: bool)                                                                          | 
-| Member     | set_birthday(self, birthday: str)                                                                          | 
-| Member     | set_address(self, address: str)                                                                          | 
-| Boolean     | remove_member(self)  
+| Member      | `add_member(self, user_id, first_name, last_name, email, pw, cc_num, invited_by, user_type, birthday, address, phone number, date_created)`                                                                                                                              |           
+| Member      | `get_member(self, obj_id)`                                                                                                   |
+| Member     | `set_visibility(self, visibility: bool)`                                                                                     | 
+| Member     | `set_email(self, new_email: string)`                                                                                    | 
+| Member     | `set_password(self, new_password: str)`                                                                          | 
+| Member     | `set_first_name(self, first_name: str)`                                                                          | 
+| Member     | `set_last_name(self, last_name: str)`                                                                          | 
+| Member     | `set_points(self, points: int)`                                                                          | 
+| Member     | `set_user_type(self, type: str)`                                                                          | 
+| Member     | `set_is_verified(self, verification: bool)`                                                                          | 
+| Member     | `set_birthday(self, birthday: str)`                                                                          | 
+| Member     | `set_address(self, address: str)`                                                                          | 
+| Boolean     | `remove_member(self)`  
       
 ### Post API
 
@@ -168,7 +168,7 @@ Helper Functions: As is the case with the other object classes, we need to be ab
    - `Create Comment`:
       - Preconditions: Content, User, Post, Replies (optional) 
       - Postconditions: Returns a *Comment* object with the following parameters set: user, post, replies, content, by_admin  
-   - `Create Card`: 
+   - `Create Credit Card`: 
       - Preconditions: User
       - Postconditions: Returns a *CreditCard* object with the following parameters set: user, card_num, cvv, holder_name, card_expiration, currently_used, address, zipcode. 
    - `Create Image`:
@@ -239,7 +239,7 @@ Steps:
 1. Create a new *Member* object with a name attribute "new_user".
 2. Change *Member's* username by calling  `<member>.set_username("DIFFERENT_USER")`.
 3. Call the username of this *Member* using the call `<member>.data['username']`.
-4. Test that username is equal to "DIFFERENT_USER". 
+4. Test that username is equal to `"DIFFERENT_USER"`. 
    
 ***Test Case #6: Setting Member Points***
 
@@ -337,7 +337,6 @@ Steps:
 2. Verify that the created *Comment* object is an instance of *Comment*. 
 3. Verify that the *Comment* object has successfully been added to the *Comment* table by checking the count (given the empty database, after creation it will equal 1). 
 
-
 #### Credit Card Test Cases
 
 ***Test Case #1: Creating a Credit Card***
@@ -347,6 +346,9 @@ Steps:
 Description: This case tests that the creation of a new *Credit Card* works as intended.
 
 Steps: 
+1. Create a new *Member* object and a new *CreditCard* object. 
+2. Verify that the created *CreditCard* object is an instance of *CreditCard*. 
+3. Verify that the *CreditCard* object has successfully been added to the *CreditCard* table by checking the count (given empty database, after creation it will equal 1). 
 
 #### Image Test Cases
 
@@ -355,9 +357,8 @@ Steps:
 Description: This case tests that the creation of an image works as intended.
 
 Steps:
-
-1. Create a *member* object and a *post* object. 
-2. Use the created objects from #1 as parameters in order to create a new *image* object. 
+1. Create a new *Member* object and a new *Post* object. 
+2. Use the created objects from #1 as parameters in order to create a new *Image* object. 
 
 Note: There is another another image variable that is a temporary photo file object created in order to test for comparisons.
       Assert Statements: 
