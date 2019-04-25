@@ -193,7 +193,7 @@ Description: Testing to retrieve data from within the database.
 
 Steps:
 1. Create a new *Member* object with a name attribute "user_name". 
-2. Call for the username of that variable created using the <member>.data['username'] to retrieve the username.
+2. Call for the username of that variable created using the `<member>.data['username']` to retrieve the username.
 3. Compare this username to the username used upon creation of *Member* object. Confirm these values match.
       
 ***Test Case #4: Retrieving a Member Attribute By ID***
@@ -204,19 +204,21 @@ Description: Testing that a *Member* attribute can be retrieved through use of *
 
 Steps: 
 1. Create a new *Member* object with a name attribute "new_user". 
-2. Get ID of *Member* using <member>.data['id'] call. 
-3. Call for *Member* object using Member.objects.get(id=new_member_id).data()['username'] call. 
+2. Get ID of *Member* using `<member>.data['id']` call. 
+3. Call for *Member* object using `Member.objects.get(id=new_member_id).data()['username']` call. 
 4. Confirm that the *Member* name is equal to "new_user". 
       
 ***Test Case #5: Editing a Member***
    
 *test_edit()*
 
-Description:
+Description: Testing that editing a *Member* object sees the change in the database. 
 
-Steps: 
-
-This test is testing if we can make an edit to the Member object.  We first start by creating a new Member object, and setting its user name to "new-user".  We then change its user name by calling the call <member>.set_username("USER") but pass in a different name to what we oroginially made it to be.  After this we have to call the user name of this member from the Member table by using the same call <member>.data['username'].  We then test to see if this username is equal to "USER".
+Steps:
+1. Create a new *Member* object with a name attribute "new_user".
+2. Change *Member's* username by calling  `<member>.set_username("DIFFERENT_USER")`.
+3. Call the username of this *Member* using the call `<member>.data['username']`.
+4. Test that username is equal to "DIFFERENT_USER". 
    
 ***Test Case #6: Setting Member Points***
 
