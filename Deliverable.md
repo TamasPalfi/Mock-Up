@@ -453,22 +453,22 @@ Steps:
 ### Important Cases and Edge Cases
 
    1. Ensure that data critical to a user's verification is stored correctly in the database
-      - Credit card number is 16 digits
-      - Ensure 'cvv' is either 3 or 4 digits
-      - Expiration date must be valid (and in the future)
-      - Birth month is between numeric values 1 - 12
-      - Birth day is between numeric values 1 - 30
-      - Ensure user type is either `Member`, `Admin`, or `Idol`
+      - Ensure CreditCard attribute `card_num` is 16 digits
+      - Ensure CreditCard attribute `cvv` is either 3 or 4 digits
+      - Ensure CreditCard attribute `card_expiration` must be valid (and in the future)
+      - Ensure `Member` attribute `birthday` contains month that is between numeric values 1 - 12
+      - Ensure `Member` attribute `birthday` contains day that is between numeric values 1 - 30
+      - Ensure `user` type is either `Member`, `Admin`, or `Idol`
    
    2. Ensure retrieving data from database table returns expected value
-      - 2.a. Ensure ID is valid
-      - 2.b. Ensure the column retrieving from is in database table
-      - 2.c. Ensure the column we're retrieving from is filled and contains data
+      - Ensure `id` is valid
+      - Ensure the column retrieving from is in database table
+      - Ensure the column retrieving from is filled and contains data
    
-   3. Ensure updating a table updates the right thing
-      - 3.a. Ensure column exists
-      - 3.b. Ensure id is valid
-      - 3.c. Ensure all data is valid (see #1)
+   3. Ensure updating a table updates the correct item
+      - Ensure column exists
+      - Ensure `id` is valid
+      - Ensure all data is valid (see #1)
    
    4. Ensure deleting from a table entry removes from database
-      - 4.a. Ensure id is valid
+      - Ensure `id` is valid
