@@ -10,7 +10,7 @@ Our design is abiding by the principles of having a tightly coupled set of objec
 
 Similarly, it allows our objects to establish a one to one connection with their associated table in the database, allowing for single instantiations of objects to communicate directly with the database. 
 
-Overall, the database adapter, namely models.py in the case of our Django project, provides factory methods to introduce functionality such as getting, setting, deleting, and creating system objects. In this case there are be private methods that allow our team to create objects with private constructors and return them to the rest of the system. This in turn allows the other teams to use the objects for whatever purposes they need to. Otherwise, there will be a public API with get, set, remove, and add methods for each system object that are visible to the other teams to use. In this case, the database knows about the various objects in the system.
+The database adapter, namely models.py in the case of our Django project, provides factory methods to introduce functionality such as *getting*, *setting*, *deleting*, and *creating* system objects. These are private methods that allow our team to create objects with private constructors and return them for use within the rest of the system. This allows other teams within our track to use these objects for whatever purposes needed. We also have a public API with *get*, *set*, *add*, and *remove* methods for each system object that are visible to the other teams for their own uses. In this case, the database knows of the various objects within the system.
       
 ## Public API
 
@@ -88,8 +88,7 @@ Overall, the database adapter, namely models.py in the case of our Django projec
 
 ## Private API
 
-We currently have private constructors that can only be accessed through private method calls in our DBAdaptor class 
-which instantiate instances of:
+We currently have private constructors that can only be accessed through private method calls in our DBAdaptor class which instantiate instances of:
    - Member objects
    - Post objects
    - Image objects
@@ -158,6 +157,118 @@ Similarly, we would test that there would be a connection that would allow the m
 
 ### Unit Tests
 
+#### Member Test Cases
+
+***Test Case #1: Creating an Member***
+
+*test_create()*
+
+Description: This case tests that the creation of a new *Member* works as intended.
+
+Steps:
+
+1. Create a new *Member* object. 
+2. Check that new *Member* created is an instance of Member. 
+3. Check that total count of Members is 1 - ensuring that new *Member* has been added.
+Note: When the *Member* object was instantiated, it was set to a *Member* object - but this could just as easily have been *Admin* or *Idol*, as these do the same function as Member. Testing for *Member* shows it will work for *Idol* and *Admin*. 
+
+***Test Case #2: Creating an Member***
+
+*test_class_create()*
+
+Description: Similar to ***Test Case #1***, except testing for a second *Member* object being added to Member table in database.
+
+Steps:
+
+1. Create a new *Member* object. 
+2. Check that new *Member* created is an instance of Member. 
+3. Check that total count of Members is 2 - ensuring that new *Member* has been added.
+Note: When the *Member* object was instantiated, it was set to a *Member* object - but this could just as easily have been *Admin* or *Idol*, as these do the same function as Member. Testing for *Member* shows it will work for *Idol* and *Admin*. 
+
+***Test Case #3: Retrieving a Member Attribute***
+
+*test_get_specific_data()*
+
+Description: 
+
+In this test we are testing to see if we can get data from the database.  We first make a new Member with a name of "user_name".  We then call for the username of that variable we just created using the <memebr>.data['username'] to retrieve the user name of the variable before the dot.  We then check this username agaist the username that we used when creating the Member, "user_name", to see if the username of the created Member is the same as the user name we used to create the member.
+      
+***Test Case #4: Retrieving a Member Attribute By ID***
+   
+*test_get_byid()*
+
+Description:
+
+Steps: 
+
+
+This test is designed to test that we can retrieve data from the tables using the ID of each row.  We first start by creating a new Member with the user name "new-user".  We then get the ID if this member by using the same <member>.data['id'] call we made earlier, but this same asking for the "id" field.  We then make a call asking for the whole Member object by making the call Member.objects.get(id=new_member_id).data()['username'], passing in the id we just retrieved into the id field to that the get call can return back the whole Member object.  With this Member object, we can use <member>.data()['username'] again, but only asking for the user name.  Lastly we check to see if this user name is equal to the name "new-user" which we used at the beginning to set the name of the new Member.
+      
+***Test Case #4: Editing a Member***
+   
+*test_edit()*
+
+Description:
+
+Steps: 
+
+This test is testing if we can make an edit to the Member object.  We first start by creating a new Member object, and setting its user name to "new-user".  We then change its user name by calling the call <member>.set_username("USER") but pass in a different name to what we oroginially made it to be.  After this we have to call the user name of this member from the Member table by using the same call <member>.data['username'].  We then test to see if this username is equal to "USER".
+   
+***Test Case #5: Setting Member Points***
+
+*test_set_points()*
+
+Description:
+
+Steps: 
+
+This test is to show that we can change the point value of each member quickly and easily.  We start off by creating a new Member, but leaving out the points field and not defining it in the Member creation.  We then take this member and call the method set_points(), and set the amount of points to whetever, we can set it to 1.  When we retrieve the amount of points that the member has, and check to see that it equals 1.
+
+***Test Case #6: Deleting Member***
+
+*test_delete()*
+
+Description:
+
+Steps:
+
+Here we are testing to see if we can create and delete a Member successfully.  We start by creating a new member, then checking to see if it is in the table by calling Member.objects.count() and seeing if that returns a 1.  We then retrieve the id of that object in the table, and delete this by calling Member.objects.filter(id=id).delete(), this will delete the object in the table of that id.  Lastly we call the Member count again and check to see if it is now back at 0, to show that this Member has successfully been deleted.
+
+***Test Case #7: Remove Method for Member***
+
+*test_remove_method()*
+
+Description:
+
+Steps: 
+
+This test is testing to see if our remove method is working properly.  This remove_member() methond is defined in our Models.py.  We start off by first creating a member, then once this is complete we remove the member using the function remove_member().  We then test to see if the count of the Members table is equal to 0.
+
+***Test Case #8: Retrieving Member Attribute Invitedby***
+
+*test_inviteby()*
+
+Description:
+
+Steps:
+
+In this test, we are testing to see if we can propery retireve the person who the member was invited by.  We start off by creating two members, one is an idol and the other is a member in which we add the idol as the person who the member was invited by.  We then retrieve the user that invited the member, and extract the user name from that user.  We then test to see  if this user name is equal to the user name of the idol.
+
+#### Post Test Cases
+
+test_create()
+We start this test by creating a new Member object as well as a new Post object.  We first test to see if this post object is an instance of a Post.  Lastly we test to see if there is a Post object in the Post table, showing that a post has been successfully added to the post table.  It is important to note that since we were able to successfully create the post with information added to the user field, we do not have to test that all fields work because we now know they work.
+
+test_writer()
+The point to this test is to test to make sure that the writer of the post is the writer we set it to.  We start here by first creating a new Member and a new Post with the Member as the author.  Then we excract the user_id from the post, to find out who the user was who wrote it.  We then use this id to extract the username from the Member object, and test this user name agaist the name we used to create the Member.  
+
+test_set_urls()
+This test is testing that we can change the url of the post successfully.  Being able to do this proves that we can also change every other field in the Post object successfully, because when changing anything in the Post object we just perform the same operation.  So doing it once would prove that we can do it for all of them.  We first start off by creating a Member object and a Post object.  We then define the url of the post to be www.cooltest.com using our set_urls function defined in Models.py.  After this we extract the url name from the post, and test this against the name www.cooltest.com.
+
+#### Comment Test Cases
+
+#### Credit Card Test Cases
+
 #### Image Test Cases
 
 Helper Functions: As is the case with the other object classes, we need to be able to create instances of each object and associated      objects following it in the hierarchy for testing purposes. For the Image test cases, we create the following helper functions:
@@ -171,13 +282,19 @@ Helper Functions: As is the case with the other object classes, we need to be ab
       - Pre-Conditions: User, post, image.
       - Post-Conditions: Returns a Image object with the following params set: user, post, current_image, is_flagged, and by_admin.
 
-Case 1: Creating Image
-   This case tests that the creation of an image works as intended. It works by creating a member and post object first, and using those    created objects as parameters to make an Image object.  There is another image variable that is essentially a temporary photo file      object created to test for comparisons
-   
-   Assert Statements:
-      - Test that the image variable is the same instance/object as that image built through our API's create call.  
-      - Test that the object count is equal to one.  Basically, to ensure create didn't make a duplicate. 
+***Test Case #1: Creating an Image***
 
+Description: This case tests that the creation of an image works as intended.
+
+Steps:
+
+1. Create a *member* object and a *post* object. 
+2. Use the created objects from #1 as parameters in order to create a new *image* object. Note: There is another another image variable that is a temporary photo file object created in order to test for comparisons.
+
+      Assert Statements: 
+      - Test that the image variable is the same instance/object as that image built through the API's create call.  
+      - Test that the object count is equal to one, ensuring no duplicate creation. 
+      
 Case 2: Creating Image Test # 2
    This case tests that the creation of an image actually works by adding the new image to the database. It is essentially the same as      test case #1, but is ensuring that our API create call adds data to the database
    
@@ -231,68 +348,25 @@ Case 1: Creating a Filter Object
    Assert Statements:
       - Test that the updated filter_id was reflected in the database and is equivalent. 
 
-#### Member Test Cases
-
-test_create()
-Here we are testing is we can create a new Member, and we check to see if these changes take place in the database.  We first instantiating a new Member using out create function in our Member object.  We then test to see if that new Member variable we just created is an instance of Member, just to make sure that it was created correctly.  Lastly we test to see if the total count of Members in out database is 1, ensuring that 1 Member was successfully added into the Member table.  It is important to note here that when we instantiated our Member object, we set it to be a "Member" object, but this could have been of type "Admin" or "Idol" since these do the same function as a member.  By testing this works for Member, this proves that it will also work for Idol and Admin as well.
-
-test_class_create()
-This test is similar to the last one, except that it is testing if a second Member object is being added to the Member table in the database.  We first start by creating a new Member.  We then test if this new member object created is an instance of a Member object.  Then lastly we test to see if this Member object was added to the Member table in the database by checking to see if the total objects in the table is equal to 2.
-
-test_get_specific_data()
-In this test we are testing to see if we can get data from the database.  We first make a new Member with a name of "user_name".  We then call for the username of that variable we just created using the <memebr>.data['username'] to retrieve the user name of the variable before the dot.  We then check this username agaist the username that we used when creating the Member, "user_name", to see if the username of the created Member is the same as the user name we used to create the member.
-   
-test_get_byid()
-This test is designed to test that we can retrieve data from the tables using the ID of each row.  We first start by creating a new Member with the user name "new-user".  We then get the ID if this member by using the same <member>.data['id'] call we made earlier, but this same asking for the "id" field.  We then make a call asking for the whole Member object by making the call Member.objects.get(id=new_member_id).data()['username'], passing in the id we just retrieved into the id field to that the get call can return back the whole Member object.  With this Member object, we can use <member>.data()['username'] again, but only asking for the user name.  Lastly we check to see if this user name is equal to the name "new-user" which we used at the beginning to set the name of the new Member.
-   
-test_edit()
-This test is testing if we can make an edit to the Member object.  We first start by creating a new Member object, and setting its user name to "new-user".  We then change its user name by calling the call <member>.set_username("USER") but pass in a different name to what we oroginially made it to be.  After this we have to call the user name of this member from the Member table by using the same call <member>.data['username'].  We then test to see if this username is equal to "USER".
-   
-test_set_points()
-This test is to show that we can change the point value of each member quickly and easily.  We start off by creating a new Member, but leaving out the points field and not defining it in the Member creation.  We then take this member and call the method set_points(), and set the amount of points to whetever, we can set it to 1.  When we retrieve the amount of points that the member has, and check to see that it equals 1.
-
-test_delete()
-Here we are testing to see if we can create and delete a Member successfully.  We start by creating a new member, then checking to see if it is in the table by calling Member.objects.count() and seeing if that returns a 1.  We then retrieve the id of that object in the table, and delete this by calling Member.objects.filter(id=id).delete(), this will delete the object in the table of that id.  Lastly we call the Member count again and check to see if it is now back at 0, to show that this Member has successfully been deleted.
-
-test_remove_method()
-This test is testing to see if our remove method is working properly.  This remove_member() methond is defined in our Models.py.  We start off by first creating a member, then once this is complete we remove the member using the function remove_member().  We then test to see if the count of the Members table is equal to 0.
-
-test_inviteby()
-In this test, we are testing to see if we can propery retireve the person who the member was invited by.  We start off by creating two members, one is an idol and the other is a member in which we add the idol as the person who the member was invited by.  We then retrieve the user that invited the member, and extract the user name from that user.  We then test to see  if this user name is equal to the user name of the idol.
-
-#### Post Test Cases
-
-test_create()
-We start this test by creating a new Member object as well as a new Post object.  We first test to see if this post object is an instance of a Post.  Lastly we test to see if there is a Post object in the Post table, showing that a post has been successfully added to the post table.  It is important to note that since we were able to successfully create the post with information added to the user field, we do not have to test that all fields work because we now know they work.
-
-test_writer()
-The point to this test is to test to make sure that the writer of the post is the writer we set it to.  We start here by first creating a new Member and a new Post with the Member as the author.  Then we excract the user_id from the post, to find out who the user was who wrote it.  We then use this id to extract the username from the Member object, and test this user name agaist the name we used to create the Member.  
-
-test_set_urls()
-This test is testing that we can change the url of the post successfully.  Being able to do this proves that we can also change every other field in the Post object successfully, because when changing anything in the Post object we just perform the same operation.  So doing it once would prove that we can do it for all of them.  We first start off by creating a Member object and a Post object.  We then define the url of the post to be www.cooltest.com using our set_urls function defined in Models.py.  After this we extract the url name from the post, and test this against the name www.cooltest.com.
-
 ### Important Cases and Edge Cases
 
-   1. Make sure data critical to users verification is stored correctly
-      -CC num is 16 digits
-      -birthday month is between 1-12
-      -Birthday day is 1-30
-      -Make sure user type is either Member, Admin, or Idol
-      -Make sure CVV is either 3 or 4 digits
-      -Expiration data must be valid date
+   1. Ensure that data critical to a user's verification is stored correctly in the database
+      - Credit card number is 16 digits
+      - Ensure 'cvv' is either 3 or 4 digits
+      - Expiration date must be valid (and in the future)
+      - Birth month is between numeric values 1 - 12
+      - Birth day is between numeric values 1 - 30
+      - Ensure user type is either Member, Admin, or Idol
    
-   2. Ensure fetching from a table returns the right thing
-      - 2.a. Make sure id is valid
-      - 2.b. Make sure the column we're fetching is actually in the table
-      - 2.c. Make sure the column we're fetching is filled in and has data in it
+   2. Ensure retrieving data from database table returns expected value
+      - 2.a. Ensure ID is valid
+      - 2.b. Ensure the column retrieving from is in database table
+      - 2.c. Ensure the column we're retrieving from is filled and contains data
    
    3. Ensure updating a table updates the right thing
-      - 3.a. Make sure that column exists
-      - 3.b. Make sure that id is valid
-      - 3.c. Make sure all our data is valid (see 1.a.)
+      - 3.a. Ensure column exists
+      - 3.b. Ensure id is valid
+      - 3.c. Ensure all data is valid (see #1)
    
-   4. Ensure deleting from a table entry will delete it properly
-      - 4.a. Make sure id is valid
-
-
-
+   4. Ensure deleting from a table entry removes from database
+      - 4.a. Ensure id is valid
