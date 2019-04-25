@@ -176,7 +176,7 @@ Note: When the *Member* object was instantiated, it was set to a *Member* object
 
 *test_class_create()*
 
-Description: Similar to ***Test Case #1***, except testing for a second *Member* object being added to Member table in database.
+Description: Similar to ***Test Case #1***, except this case tests for a second *Member* object being added to Member table in database.
 
 Steps:
 
@@ -189,7 +189,7 @@ Note: When the *Member* object was instantiated, it was set to a *Member* object
 
 *test_get_specific_data()*
 
-Description: Testing to retrieve data from within the database. 
+Description: This case tests for retrieval of data from within the database. 
 
 Steps:
 1. Create a new *Member* object with a name attribute "user_name". 
@@ -200,11 +200,11 @@ Steps:
    
 *test_get_byid()*
 
-Description: Testing that a *Member* attribute can be retrieved through use of *Member's* ID. 
+Description: This case tests that a *Member* attribute can be retrieved through use of *Member's* id. 
 
 Steps: 
 1. Create a new *Member* object with a name attribute "new_user". 
-2. Get ID of *Member* using `<member>.data['id']` call. 
+2. Get id of *Member* using `<member>.data['id']` call. 
 3. Call for *Member* object using `Member.objects.get(id=new_member_id).data()['username']` call. 
 4. Verify that the *Member* name is equal to "new_user". 
       
@@ -212,7 +212,7 @@ Steps:
    
 *test_edit()*
 
-Description: Testing that editing a *Member* object sees the change in the database. 
+Description: This case Tests that after editing a *Member* object, the change is seen in the database. 
 
 Steps:
 1. Create a new *Member* object with a name attribute "new_user".
@@ -224,7 +224,7 @@ Steps:
 
 *test_set_points()*
 
-Description: Testing that changing a *Member's* point value shows the change in the database. 
+Description: This case tests that changing a *Member's* point value shows the change in the database. 
 
 Steps: 
 
@@ -236,7 +236,7 @@ Steps:
 
 *test_delete()*
 
-Description: Testing that a *Member* is successfully deleted from the database. 
+Description: This case tests that a *Member* is successfully deleted from the database. 
 
 Steps:
 1. Create a new *Member*, confirming that it exists within the database by calling `Member.objects.count()`, checking for a return value of 1. 
@@ -248,7 +248,7 @@ Steps:
 
 *test_remove_method()*
 
-Description: Test checking that the remove method is working correctly. `remove_member()` is defined in Models.py.
+Description: This cas tests remove method is working correctly. `remove_member()` is defined in Models.py.
 
 Steps: 
 1. Create a new *Member*, confirming that it exists within the database.
@@ -258,7 +258,7 @@ Steps:
 
 *test_inviteby()*
 
-Description: Testing to see if we can properly retrieve the user in which the *Member* was invited by. 
+Description: This case tests for proper retrieval of the user in which a *Member* was invited by. 
 
 Steps:
 1. Create 2 *Members*, one is an *Idol* and one is a *Member*. The *Idol* invited the *Member* in this case. 
@@ -290,10 +290,18 @@ Steps:
 2. Extract the user_id from the post. 
 3. Use the user_id to extract the username from the *Member* object, testing that it matches the name of the *Member* created in step 1. 
 
-***Test Case #3:***
+***Test Case #3: Change of URL***
 
 test_set_urls()
-This test is testing that we can change the url of the post successfully.  Being able to do this proves that we can also change every other field in the Post object successfully, because when changing anything in the Post object we just perform the same operation.  So doing it once would prove that we can do it for all of them.  We first start off by creating a Member object and a Post object.  We then define the url of the post to be www.cooltest.com using our set_urls function defined in Models.py.  After this we extract the url name from the post, and test this against the name www.cooltest.com.
+
+Description: This case tests that the URL of a post is successfully changed.
+
+Steps: 
+1. Create a new *Member* object and a new *Post* object.
+2. Define the url of the *Post* to be www.cooltest.com using the `set_urls` function defined in Models.py. 
+3. Extract the url name from the *Post*, and test against the name www.cooltest.com
+
+Note: This shows a change for other fields of *Post* will have similar responses.
 
 #### Comment Test Cases
 
@@ -414,7 +422,7 @@ Case 1: Creating a Filter Object
       - Expiration date must be valid (and in the future)
       - Birth month is between numeric values 1 - 12
       - Birth day is between numeric values 1 - 30
-      - Ensure user type is either Member, Admin, or Idol
+      - Ensure user type is either *Member*, *Admin*, or *Idol*
    
    2. Ensure retrieving data from database table returns expected value
       - 2.a. Ensure ID is valid
